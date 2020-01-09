@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  background-color: #487346;
+  background-image: url('./images/bg.svg');
+}
+
+input[type=number] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 10%;
+}
+
+input[type=checkbox] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+input[type=checkbox]:hover {
+  color: black;
+}
+
+.checkboxDiv {
+  display: flex;
+  margin: 2% 0 2% 5%;
+  align-self: start;
+}
+
+label {
+  margin-left: 6%;
+  align-self: start;
+}
+
+.create-b {
+  border: none;
+  border-radius: 6px;
+  margin: 3vh;
+  cursor: pointer;
+  padding: 2% 4% 2% 4%;
+  background-color: #00831c;
+  color: white;
+  font-size: 19px;
+}
+
+.create-b:hover {
+  background-color: #005813;
+}
+
+.deledit-b {
+  /* height: 25px; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer
+}
+
+.del-b {
+  background-color: #00000000;
+}
+
+.edit-b {
+  background-color: #00000000;
+}
+
+.svg-remove {
+  height: 20px;
+  color: #ff0000;
+}
+
+.svg-remove:hover {
+  color: #850000;
+}
+
+.svg-edit {
+  height: 20px;
+  color: #ff9100;
+}
+
+.svg-edit:hover {
+  color: #8d5000;
+}

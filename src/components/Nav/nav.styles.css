@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.89);
+  box-shadow: 0 0 0px 15px #ff0000
+}
+
+.nav-links {
+  margin: 0;
+  height: 80%;
+  min-width: 240px;
+  display: flex;
+  justify-content: space-between;
+  list-style: none
+  }
+  
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 4px 11px 5px 11px;
+  color: white;
+  cursor: pointer;
+  text-decoration-line: none
+}
+
+.nav-link :hover {
+  color: red;
+  transition-duration: 165ms;
+  transform: scale(1.1)
+}
+  

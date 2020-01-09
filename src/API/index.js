@@ -9,8 +9,8 @@ const axiosInstance = axios.create({
 const Endpoint = EndpointFactory(axiosInstance);
    
 export default {
-  rooms       : new Endpoint("rooms"),
-  roomsStatus : new Endpoint("rooms/status"),
-  bookings    : new Endpoint("roomBookings"),
-  visitors    : new Endpoint("visitors")
+  rooms       : new Endpoint(({id} = "") => `rooms/${id ? id : ""}`),
+  bookings    : new Endpoint(({id} = "") => `roomBookings/${id}`),
+  visitors    : new Endpoint(({id} = "") => `visitors/${id}`),
+  roomsStatus : new Endpoint("rooms/status")
 }
