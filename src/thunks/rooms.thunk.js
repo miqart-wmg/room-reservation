@@ -48,16 +48,15 @@ export const createRoomThunk = (data) => async (dispatch) => {
   }
 }
 
-export const editRoomThunk = (id, data) => async (dispatch) => {
+export const editRoomThunk = (data) => async (dispatch) => {
   try {
     dispatch(editRoomRequest());
-    const response = await api.rooms.put(id, data);
+    const response = await api.rooms.put(data);
     
     if (response.status !== 200) {
       throw new Error('Can not create Room')
     }
     dispatch(editRoomSuccess(response.data));
-    dispatch(getStatusThunk())
   } catch (error) {  
     dispatch(editRoomFailure());
   }

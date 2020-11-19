@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const initialState = { floor: "", beds: "", balcony: false, roomId: "", bookedAt: "" };
 
@@ -12,6 +12,10 @@ const RoomsForm = ({ create, edit, data, cancelEdit }) => {
       setTemplate(initialState);
     }
   }
+ 
+  useEffect(() => {
+    setTemplate(data.initialState);
+  }, [data]);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target
@@ -38,7 +42,7 @@ const RoomsForm = ({ create, edit, data, cancelEdit }) => {
       {data.editing ?
         <div className="btn-group">
           <button className="create-b" onClick={cancelEdit}>Cancel</button>
-          <button className="create-b" onClick={() => edit(template)}>Save</button>
+          <button className="create-b" onClick={() => {edit(template); cancelEdit()}}>Save</button>
         </div>
         :
         <button className="create-b" onClick={() => onHandleSubmit(template)}>Create</button>}

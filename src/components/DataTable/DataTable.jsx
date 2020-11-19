@@ -28,7 +28,7 @@ const DataTable = ({ rooms, remove, update }) => {
               <td>{room.balcony ? "Yes" : "No"}</td>
               <td>{room.roomId}</td>
               <td>
-                <button className="deledit-b edit-b" onClick={() => update({ floor: room.floor, beds: room.beds, balcony: room.balcony, roomId: room.roomId })} >
+                <button className="deledit-b edit-b" onClick={() => update(room)} >
                   <EditIcon className="svg-edit" />
                 </button>
               </td>

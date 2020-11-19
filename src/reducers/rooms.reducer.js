@@ -52,9 +52,7 @@ export default function roomsReducer(state = initialState, action) {
       }
 
     case 'CREATE_ROOM_REQUEST':    
-      return {
-        ...state
-      }
+      return state;
 
     case 'CREATE_ROOM_SUCCESS':
       return {
@@ -63,14 +61,10 @@ export default function roomsReducer(state = initialState, action) {
       }
 
     case 'CREATE_ROOM_FAILURE':
-      return {
-        ...state
-      }
+      return state;
 
     case 'REMOVE_ROOM_REQUEST':    
-      return {
-        ...state
-      }
+      return state;
 
     case 'REMOVE_ROOM_SUCCESS':
       return {
@@ -79,25 +73,25 @@ export default function roomsReducer(state = initialState, action) {
       }
 
     case 'REMOVE_ROOM_FAILURE':
-      return {
-        ...state
-      }
+      return state;
 
     case 'EDIT_ROOM_REQUEST':    
-      return {
-        ...state
-      }
+      return state;
 
     case 'EDIT_ROOM_SUCCESS':
       return {
-        ...state
-        //... 
+        ...state,
+        rooms: state.rooms.map(room => {
+          if(room.id === action.payload.id) {
+            return action.payload
+          }else {
+            return room
+          }
+        })
       }
 
     case 'EDIT_ROOM_FAILURE':
-      return {
-        ...state
-      }
+      return state;
 
     default:
       return state

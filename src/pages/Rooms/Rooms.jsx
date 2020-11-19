@@ -23,7 +23,7 @@ const Rooms = (props) => {
 
   useEffect(() => {
     getRooms();
-    getStatus()
+    getStatus();
   }, [])
   
   return (
@@ -69,8 +69,8 @@ const mapDispatchToProps = (dispatch) => {
     removeRoom: (id) => {
       dispatch(removeRoomThunk(id))
     },
-    editRoom: (id) => {
-      dispatch(editRoomThunk(id))
+    editRoom: (data) => {
+      dispatch(editRoomThunk(data))
     }
   }
 }
