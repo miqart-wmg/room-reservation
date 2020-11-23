@@ -4,7 +4,7 @@
   height: 70px;
   width: 100%;
   background: rgba(0, 0, 0, 0.89);
-  box-shadow: 0 0 0px 15px #ff0000
+  border-bottom: 10px solid #ff0000
 }
 
 .nav-links {
@@ -25,9 +25,12 @@
   text-decoration-line: none
 }
 
-.nav-link :hover {
-  color: red;
+.nav-link:hover {
+  color: rgb(184, 184, 184);
   transition-duration: 165ms;
-  transform: scale(1.1)
+}
+
+.activeRoute {
+  color: red !important;
 }
   

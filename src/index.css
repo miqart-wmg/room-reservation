@@ -12,9 +12,21 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Nunito';
+  src: local('Nunito-Regular'), url(./fonts/Nunito-Regular.ttf) format('truetype');
+  font-weight: normal
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: local('Nunito-Bold'), url(./fonts/Nunito-Bold.ttf) format('truetype');
+  font-weight: bold
+}
+
 #root {
-  background-color: #487346;
   background-image: url('./images/bg.svg');
+  font-family: 'Nunito', sans-serif !important;
 }
 
 input[type=number] {
@@ -32,7 +44,7 @@ input[type=checkbox] {
   width: 22px;
   height: 22px;
   cursor: pointer;
-  margin: 1px 4px;
+  margin: 0px 4px;
 }
 
 input[type=checkbox]:hover {
@@ -59,6 +71,8 @@ label {
   background-color: #00831c;
   color: white;
   font-size: 19px;
+  font-family: 'Nunito', sans-serif;
+  outline: none;
 }
 
 .create-b:hover {
