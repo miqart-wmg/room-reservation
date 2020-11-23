@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/room-reservation/static/css/main.8eba6afb.chunk.css",
-    "main.js": "/room-reservation/static/js/main.70bddf21.chunk.js",
-    "main.js.map": "/room-reservation/static/js/main.70bddf21.chunk.js.map",
+    "main.js": "/room-reservation/static/js/main.d8c3f71f.chunk.js",
+    "main.js.map": "/room-reservation/static/js/main.d8c3f71f.chunk.js.map",
     "runtime-main.js": "/room-reservation/static/js/runtime-main.9b47f827.js",
     "runtime-main.js.map": "/room-reservation/static/js/runtime-main.9b47f827.js.map",
-    "static/js/2.0725c32b.chunk.js": "/room-reservation/static/js/2.0725c32b.chunk.js",
-    "static/js/2.0725c32b.chunk.js.map": "/room-reservation/static/js/2.0725c32b.chunk.js.map",
+    "static/js/2.d9e84423.chunk.js": "/room-reservation/static/js/2.d9e84423.chunk.js",
+    "static/js/2.d9e84423.chunk.js.map": "/room-reservation/static/js/2.d9e84423.chunk.js.map",
     "index.html": "/room-reservation/index.html",
     "static/css/main.8eba6afb.chunk.css.map": "/room-reservation/static/css/main.8eba6afb.chunk.css.map",
-    "static/js/2.0725c32b.chunk.js.LICENSE.txt": "/room-reservation/static/js/2.0725c32b.chunk.js.LICENSE.txt",
+    "static/js/2.d9e84423.chunk.js.LICENSE.txt": "/room-reservation/static/js/2.d9e84423.chunk.js.LICENSE.txt",
     "static/media/index.css": "/room-reservation/static/media/bg.4110782d.svg",
     "static/media/edit.3c9aad14.svg": "/room-reservation/static/media/edit.3c9aad14.svg",
     "static/media/loading.f2322b35.svg": "/room-reservation/static/media/loading.f2322b35.svg",
@@ -17,8 +17,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9b47f827.js",
-    "static/js/2.0725c32b.chunk.js",
+    "static/js/2.d9e84423.chunk.js",
     "static/css/main.8eba6afb.chunk.css",
-    "static/js/main.70bddf21.chunk.js"
+    "static/js/main.d8c3f71f.chunk.js"
   ]
 }
