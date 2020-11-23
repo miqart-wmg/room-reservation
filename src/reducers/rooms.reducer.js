@@ -5,7 +5,7 @@ const initialState = {
     booking: 0,
     visitors: 0
   },
-  gettingRooms: false,
+  gettingData: false,
   rooms: [],
   bookings: [],
   visitors: []
@@ -35,20 +35,20 @@ export default function roomsReducer(state = initialState, action) {
     case 'GET_ROOMS_REQUEST':
       return {
         ...state,
-        gettingRooms: true
+        gettingData: true
       }
 
     case 'GET_ROOMS_SUCCESS':
       return {
         ...state,
-        gettingRooms: false,
+        gettingData: false,
         rooms: action.payload
       }
 
     case 'GET_ROOMS_FAILURE':
       return {
         ...state,
-        gettingRooms: false
+        gettingData: false
       }
 
     case 'CREATE_ROOM_REQUEST':    

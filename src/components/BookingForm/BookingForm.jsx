@@ -20,18 +20,20 @@ const BookingForm = ({ create }) => {
 
   return (
     <div className="room-form">
-      <h2>Add New Room</h2>
-      <label htmlFor="floor">Floor</label>
-      <input type="number" id="floor" onChange={onHandleChange} value={template.personName} name="floor" />
-      <label htmlFor="beds">Beds</label>
+      <h2>New Booking</h2>
+      <label htmlFor="floor">Person Name</label>
+      <select onChange={onHandleChange} value={template.personName} name="personName">
+        <option value="person">Person</option>
+      </select>
+      <label htmlFor="beds">Person ID</label>
       <input type="number" id="beds" onChange={onHandleChange} value={template.roomNumber} name="beds" />
-      <label className="checkbox-container">Balcony
-        <input type="checkbox" />
-        <span className="checkmark"></span>
-      </label>
-      <label htmlFor="roomId">Room Number</label>
+      <label htmlFor="beds">Room ID</label>
+      <select onChange={onHandleChange} value={template.roomNumber} name="personName">
+        <option value="person">Room ID</option>
+      </select>
+      <label htmlFor="roomId">Date</label>
       <input type="number" id="roomId" onChange={onHandleChange} value={template.roomId} name="roomId" />
-      <button className="create-b" onClick={() => onHandleSubmit(template)}>Create</button>
+      <button className="create-b" onClick={() => onHandleSubmit(template)}>Book</button>
     </div>
   )
 }

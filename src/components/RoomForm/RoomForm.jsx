@@ -19,7 +19,7 @@ const RoomsForm = ({ create, edit, data, cancelEdit }) => {
 
   const onHandleChange = (e) => {
     const { name, value } = e.target
-    setTemplate({ ...template, [name]: value })
+    value < 10000 && setTemplate({ ...template, [name]: value })
   }
 
   const checkboxChange = (e) => {

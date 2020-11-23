@@ -2,38 +2,36 @@ import React from 'react';
 import { ReactComponent as EditIcon } from "../../images/edit.svg";
 import { ReactComponent as RemoveIcon } from "../../images/remove.svg";
 
-const DataTable = ({ rooms, remove, update }) => {
+const DataTable = ({ tableNames, items, remove, update }) => {
   return (
     <table id="customers">
       <thead>
         <tr>
-          <th>#ID</th>
-          <th>Booked</th>
-          <th>Floor</th>
-          <th>Beds</th>
-          <th>Balcony</th>
-          <th>Number</th>
+          {tableNames.map((name, index) => {
+            return <th key={index}>{name}</th>
+          })}
           <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        {rooms.map((room, index) => {
+        {items.map((item, index) => {
+          console.log(item);
           return (
-            <tr key={room.id}>
+            <tr key={item.id}>
               <td>{index + 1}</td>
-              <td>{room.bookedAt}</td>
-              <td>{room.floor}</td>
-              <td>{room.beds}</td>
-              <td>{room.balcony ? "Yes" : "No"}</td>
-              <td>{room.roomId}</td>
+              <td>{item.bookedAt}</td>
+              <td>{item.floor}</td>
+              <td>{item.beds}</td>
+              <td>{item.balcony ? "Yes" : "No"}</td>
+              <td>{item.roomId}</td>
               <td>
-                <button className="deledit-b edit-b" onClick={() => update(room)} >
+                <button className="deledit-b edit-b" onClick={() => update(item)} >
                   <EditIcon className="svg-edit" />
                 </button>
               </td>
               <td>
-                <button className="deledit-b del-b" onClick={() => remove(room.id)} ><img src="" alt="" />
+                <button className="deledit-b del-b" onClick={() => remove(item.id)} ><img src="" alt="" />
                   <RemoveIcon className="svg-remove" />
                 </button>
               </td>

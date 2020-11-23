@@ -10,7 +10,7 @@ const Status = ({ gettingStatus, status }) => {
             <img src={loading} width="40px" alt="loading" />
             :
             [<div key="r-status">{`Rooms: ${rooms}`}</div>,
-            <div key="b-status">{`Booking: ${booking}`}</div>,
+            <div key="b-status">{`Bookings: ${booking}`}</div>,
             <div key="v-status">{`Visitors: ${visitors}`}</div>]}
         </div>
     )

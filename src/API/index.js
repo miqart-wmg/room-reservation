@@ -7,10 +7,13 @@ const axiosInstance = axios.create({
 });
 
 const Endpoint = EndpointFactory(axiosInstance);
-   
-export default {
+
+const API = {
   rooms       : new Endpoint(({id} = "") => `rooms/${id ? id : ""}`),
-  bookings    : new Endpoint(({id} = "") => `roomBookings/${id}`),
+  bookings    : new Endpoint(({id} = "") => `roomBookings/${id ? id : ""}`),
   visitors    : new Endpoint(({id} = "") => `visitors/${id}`),
   roomsStatus : new Endpoint("rooms/status")
 }
+
+   
+export default API;

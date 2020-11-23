@@ -29,7 +29,7 @@ code {
   font-family: 'Nunito', sans-serif !important;
 }
 
-input[type=number] {
+input[type=number], input[type=text], select {
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -38,6 +38,7 @@ input[type=number] {
   border-radius: 4px;
   box-sizing: border-box;
   height: 10%;
+  outline: none;
 }
 
 input[type=checkbox] {

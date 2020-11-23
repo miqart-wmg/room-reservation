@@ -54,7 +54,7 @@ export const editRoomThunk = (data) => async (dispatch) => {
     const response = await api.rooms.put(data);
     
     if (response.status !== 200) {
-      throw new Error('Can not create Room')
+      throw new Error('Can not edit Room')
     }
     dispatch(editRoomSuccess(response.data));
   } catch (error) {  

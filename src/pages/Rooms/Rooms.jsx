@@ -8,10 +8,11 @@ import Status from '../../components/Status/Status';
 import DataTable from '../../components/DataTable/DataTable';
 
 const initialState = { floor: "", beds: "", balcony: false, roomId: "" };
+const tableNames = ['#ID',	'Booked', 'Floor',	'Beds',	'Balcony',	'Number'];
 
 const Rooms = (props) => {
   const [ data, setData ] = useState({initialState: initialState, editing: false})
-  const { getStatus, getRooms, gettingStatus, gettingRooms, createRoom, removeRoom, editRoom } = props;
+  const { getStatus, getRooms, gettingStatus, gettingData, createRoom, removeRoom, editRoom } = props;
 
   const onHandleEdit = (data) => {
     setData({initialState: data, editing: true});
@@ -24,7 +25,7 @@ const Rooms = (props) => {
   useEffect(() => {
     getRooms();
     getStatus();
-  }, [])
+  }, []);
   
   return (
     <div className="container">
@@ -33,11 +34,11 @@ const Rooms = (props) => {
         <RoomForm data={data} create={createRoom} edit={editRoom} cancelEdit={onCancelEdit}/>
       </div>
       <div className="list">
-        {gettingRooms
+        {gettingData
           ?
           <img src={loading} alt="loading" style={{marginTop: "31vh"}} />
           :
-          <DataTable remove={removeRoom} update={onHandleEdit} rooms={props.rooms} />}
+          <DataTable tableNames={tableNames} remove={removeRoom} update={onHandleEdit} items={props.rooms} />}
       </div>
     </div>
   );
@@ -45,13 +46,13 @@ const Rooms = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    rooms: { status, gettingStatus, rooms, gettingRooms }
+    rooms: { status, gettingStatus, rooms, gettingData }
   } = state;
   return {
     status,
     gettingStatus,
     rooms,
-    gettingRooms
+    gettingData
   }
 }
 
