@@ -59,7 +59,7 @@ const BookingForm = ({ create, edit, cancelEdit, data, visitors, rooms }) => {
           <button className="create-b" onClick={() => {edit(template); cancelEdit()}}>Save</button>
         </div>
         :
-        <button className="create-b" onClick={() => onHandleSubmit(template)}>Create</button>}
+        <button className="create-b" onClick={() => onHandleSubmit(template)}>Book</button>}
     </div>
   )
 }
