@@ -11,7 +11,7 @@ const Endpoint = EndpointFactory(axiosInstance);
 const API = {
   rooms       : new Endpoint(({id} = "") => `rooms/${id ? id : ""}`),
   bookings    : new Endpoint(({id} = "") => `roomBookings/${id ? id : ""}`),
-  visitors    : new Endpoint(({id} = "") => `visitors/${id}`),
+  visitors    : new Endpoint(({id} = "") => `visitors/${id ? id : ""}`),
   roomsStatus : new Endpoint("rooms/status")
 }
 

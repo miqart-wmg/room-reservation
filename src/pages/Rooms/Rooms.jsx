@@ -11,7 +11,7 @@ const initialState = { floor: "", beds: "", balcony: false, roomId: "" };
 const tableNames = ['#ID',	'Booked', 'Floor',	'Beds',	'Balcony',	'Number'];
 
 const Rooms = (props) => {
-  const [ data, setData ] = useState({initialState: initialState, editing: false})
+  const [ data, setData ] = useState({initialState: initialState, editing: false});
   const { getStatus, getRooms, gettingStatus, gettingData, createRoom, removeRoom, editRoom } = props;
 
   const onHandleEdit = (data) => {
@@ -38,7 +38,7 @@ const Rooms = (props) => {
           ?
           <img src={loading} alt="loading" style={{marginTop: "31vh"}} />
           :
-          <DataTable tableNames={tableNames} remove={removeRoom} update={onHandleEdit} items={props.rooms} />}
+          <DataTable type="rooms" tableNames={tableNames} remove={removeRoom} update={onHandleEdit} items={props.rooms} />}
       </div>
     </div>
   );

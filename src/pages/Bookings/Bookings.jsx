@@ -1,40 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getBookingsThunk, createBookingThunk, removeBookingThunk, editBookingThunk } from '../../thunks';
+import { getBookingsThunk, createBookingThunk, removeBookingThunk, editBookingThunk, getVisitorsThunk, getRoomsThunk } from '../../thunks';
 import loading from '../../images/loading.svg';
 import DataTable from '../../components/DataTable/DataTable';
 import BookingForm from '../../components/BookingForm/BookingForm';
+import { formatDate } from '../../API/customFunc';
 
+const initialState = { personName: "", roomNumber: "", personId: "", bookedAt: "" };
 const tableNames = ['#', 'Person Name', 'Room ID', 'Booked', 'Person ID'];
 
 const Bookings = (props) => {
-console.log(props.bookings);
-  const { gettingData, getBookings, createBooking, removeBooking, editBooking } = props;
+  const [data, setData] = useState({ initialState: initialState, editing: false });
+  const { gettingData, getBookings, createBooking, removeBooking, editBooking, getVisitors, getRooms, bookings } = props;
+
+  const onHandleEdit = (data) => {
+    setData({ initialState: { ...data, bookedAt: formatDate(data.bookedAt) }, editing: true });
+  }
+
+  const onCancelEdit = () => {
+    setData({ initialState: initialState, editing: false })
+  }
 
   useEffect(() => {
     getBookings();
+    getVisitors();
+    getRooms();
   }, []);
-
-  console.log("LOG", props.bookings);
 
   return (
     <div className="container">
       <div className="leftSide">
-        <BookingForm />
+        <BookingForm data={data} create={createBooking} edit={editBooking} cancelEdit={onCancelEdit} />
       </div>
       <div className="list">
         {gettingData
           ?
           <img src={loading} alt="loading" style={{ marginTop: "31vh" }} />
           :
-          <DataTable tableNames={tableNames} remove={removeBooking} update={() => { }} items={props.bookings} />}
+          <DataTable type="bookings" tableNames={tableNames} remove={removeBooking} update={onHandleEdit} items={bookings} />}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log("STATEAAS", state);
   const {
     bookings: { bookings, gettingData }
   } = state;
@@ -57,6 +66,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     editBooking: (data) => {
       dispatch(editBookingThunk(data))
+    },
+    getVisitors: () => {
+      dispatch(getVisitorsThunk())
+    },
+    getRooms: () => {
+      dispatch(getRoomsThunk())
     }
   }
 }

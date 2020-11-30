@@ -1,41 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const initialState = { personName: "", roomNumber: 0, roomId: "", personId: "", bookedAt: "", id: "" };
+const initialState = { personName: "", roomNumber: "", roomId: "", personId: "", bookedAt: "" };
 
-const BookingForm = ({ create }) => {
+const BookingForm = ({ create, edit, cancelEdit, data, visitors, rooms }) => {
   const [template, setTemplate] = useState(initialState);
 
+  useEffect(() => {
+    setTemplate(data.initialState);
+  }, [data]);
+
   const onHandleSubmit = (template) => {
-    const { personName, roomNumber, roomId } = template;
-    if (personName && roomNumber && roomId) {
-      create({ ...template, bookedAt: (new Date()).toLocaleDateString('en-GB') });
+    const { personName, personId, roomNumber, bookedAt } = template;
+    if (personName && personId && roomNumber && bookedAt) {
+      create({ ...template, bookedAt: new Date(bookedAt).toLocaleDateString('en-GB') });
       setTemplate(initialState);
     }
   }
 
   const onHandleChange = (e) => {
-    const { name, value } = e.target
-    setTemplate({ ...template, [name]: value })
+    const { name, value } = e.target;
+    let { roomId } = template;
+    if(name === "roomNumber") {
+      roomId = rooms.find(item => item.roomId === parseInt(value)).id
+    }
+    setTemplate({ ...template, [name]: value, roomId: roomId });
   }
 
   return (
     <div className="room-form">
       <h2>New Booking</h2>
-      <label htmlFor="floor">Person Name</label>
-      <select onChange={onHandleChange} value={template.personName} name="personName">
-        <option value="person">Person</option>
+      <label htmlFor="personName">Person Name</label>
+      <select onChange={onHandleChange} value={template.personName || "default"} name="personName">
+      <option disabled value="default"> -- select person name -- </option>
+        {visitors.map((item, index) => {
+          return <option key={`option-${index}`} value={item.personName}>{item.personName}</option>
+        })}
       </select>
-      <label htmlFor="beds">Person ID</label>
-      <input type="number" id="beds" onChange={onHandleChange} value={template.roomNumber} name="beds" />
-      <label htmlFor="beds">Room ID</label>
-      <select onChange={onHandleChange} value={template.roomNumber} name="personName">
-        <option value="person">Room ID</option>
+      <label htmlFor="personId">Person ID</label>
+      <select onChange={onHandleChange} value={template.personId || "default"} name="personId">
+      <option disabled value="default"> -- select person id -- </option>
+        {visitors.map((item, index) => {
+          return <option key={`option-${index}`} value={item.personId}>{item.personId}</option>
+        })}
       </select>
-      <label htmlFor="roomId">Date</label>
-      <input type="number" id="roomId" onChange={onHandleChange} value={template.roomId} name="roomId" />
-      <button className="create-b" onClick={() => onHandleSubmit(template)}>Book</button>
+      <label htmlFor="roomNumber">Room ID</label>
+      <select onChange={onHandleChange} value={template.roomNumber || "default"} name="roomNumber">
+      <option disabled value="default"> -- select room id -- </option>
+        {rooms.map((item, index) => {
+          return <option key={`option-${index}`} value={item.roomId}>{item.roomId}</option>
+        })}
+      </select>
+      <label htmlFor="bookedAt">Date</label>
+      <input type="date" onChange={onHandleChange} value={template.bookedAt} name="bookedAt" />
+      {data.editing ?
+        <div className="btn-group">
+          <button className="create-b" onClick={cancelEdit}>Cancel</button>
+          <button className="create-b" onClick={() => {edit(template); cancelEdit()}}>Save</button>
+        </div>
+        :
+        <button className="create-b" onClick={() => onHandleSubmit(template)}>Create</button>}
     </div>
   )
 }
 
-export default BookingForm;
+const mapStateToProps = (state) => {
+  const {
+    visitors: { visitors },
+    rooms: { rooms }
+  } = state;
+  return {
+    visitors,
+    rooms
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(BookingForm);
+
