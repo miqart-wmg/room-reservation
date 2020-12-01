@@ -3,12 +3,12 @@ import Nav from './components/Nav/Nav';
 import Rooms from './pages/Rooms/Rooms';
 import Visitors from './pages/Visitors/Visitors';
 import Bookings from './pages/Bookings/Bookings';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 
 function App() {
   return (
-    <Router basename="/room-reservation">
+    <Router>
       <div className="App">
         <Nav />
         <Switch>
